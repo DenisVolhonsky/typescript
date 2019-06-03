@@ -1,7 +1,7 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import { shallow, mount, render, configure } from 'enzyme';
-import TestComponent from '../components/TestComponent/TestComponent';
+import Header from '../Header/Header';
 
 configure({
     adapter: new Adapter
@@ -12,6 +12,6 @@ describe('TestComponent:', ()=>{
         // console.log(wrapper.find('div'));
         // expect(wrapper.find('div')).to.equal(true);
         // expect(wrapper.find('div')).to.have.lengthOf(1);
-        expect( (shallow(<TestComponent />)).find('div.container').length).toBe(1);
+        expect( (shallow(<Header />)).find('header').length).toBe(1);
     })
 })

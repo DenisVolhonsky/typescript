@@ -1,19 +1,37 @@
-import React from 'react';
-import TestComponent from '../TestComponent/TestComponent';
-import './App.css';
+import React from 'react'
+import Header from '../Header/Header'
+import AllPosts from '../AllPosts/AllPosts'
+import './App.scss';
 
-// The application use cinema API
-// https://api.themoviedb.org
+import { fetchData, fetchFind } from '../../API'
+// console.log(fetchData('popular'));
+// console.log(fetchFind('Чернобыль'));
 
-// const App: React.FC = () => {
-const App = () => {  
-  return (
-    <div className="App">
-      <header className="App-header">
-        <TestComponent data={'Test Component'} />
-      </header>
-    </div>
-  );
+export default class App extends React.Component <{}> {
+
+  state = {
+    allPosts: []
+  }
+
+  componentDidMount() {
+    fetchFind('Чернобыль').then(data => {
+      this.setState({
+          allPosts: data
+      });
+    });
+  }
+
+  render() {
+    // console.log(this.state.allPosts);
+    const { allPosts } = this.state;
+    
+    return (
+      <div className="App">
+          <Header data={'Header data'} />
+          <AllPosts data = {allPosts}/>
+      </div>
+    );
+  }
 }
 
-export default App;
+

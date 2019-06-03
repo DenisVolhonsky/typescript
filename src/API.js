@@ -1,38 +1,31 @@
+// The application use cinema API
+// https://api.themoviedb.org
+
+// fetchData category should be: 'popular', 'top_rated', 'upcoming'
+// fetchFind title could be any string (it is nam,e of film)
+
 export function fetchData(category) {
     return fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=5a3dbcb0d2e3f7987f7290f6cae43c47`)
         .then(response=>{
-            if(response.ok) return response.json();
+            if(response.ok) 
+                return response.json();
             throw new Error('Fetching error'+ response.statusText);
         })
-        .then(data => {
-          //console.log(data);
-            let films = [];
-            data.results.map(item => {
-                const {id, title, overview, poster_path, vote_average, release_date} = item;
-                films.push({id, title, overview, poster_path, vote_average, release_date});
-                return films;
-            });
-            return films;
-        })
+        .then(({ results }) => results.map(({id, title, overview, poster_path, vote_average, release_date}) => ({
+            id, title, overview, poster_path, vote_average, release_date
+        })))
         .catch(err => console.log(err));
 }
-
 
 export function fetchFind(title) {
     return fetch(`https://api.themoviedb.org/3/search/movie?api_key=5a3dbcb0d2e3f7987f7290f6cae43c47&query=${title}`)
         .then(response=>{
-            if(response.ok) return response.json();
+            if(response.ok) 
+                return response.json();
             throw new Error('Fetching error'+ response.statusText);
         })
-        .then(data => {
-            //console.log(data);
-            let films = [];
-            data.results.map(item => {
-                const {id, title, overview, poster_path, vote_average, release_date} = item;
-                films.push({id, title, overview, poster_path, vote_average, release_date});
-                return films;
-            });
-            return films;
-        })
+        .then(({ results }) => results.map(({id, title, overview, poster_path, vote_average, release_date}) => ({
+            id, title, overview, poster_path, vote_average, release_date
+        })))
         .catch(err => console.log(err));
 }
