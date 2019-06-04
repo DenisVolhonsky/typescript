@@ -1,17 +1,14 @@
-import {createStore, combineReducers} from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-
-import counterReducer from './counterReducer'
-// import stepReducer from './stepReducer'
-
+import thunk from 'redux-thunk';
+import postsReducer from './Posts/postsReducer';
+// import favoriteItemsReducer from './favoriteItemsReducer';
 
 const rootReducer = combineReducers({
-  counterValue: counterReducer,
-  // step: stepReducer
+    postsReducer
+    // favoriteItemsReducer
 });
 
-const enhancer = composeWithDevTools();
-
-const store = createStore(rootReducer, enhancer);
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 export default store;
