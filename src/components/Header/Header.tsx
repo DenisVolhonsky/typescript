@@ -1,5 +1,7 @@
 import React from 'react'
 import './Header.scss'
+import { isAuthenticated } from '../../Redux/Auth/selectors'
+import AuthNav from '../AuthNav/AuthNav'
 
 interface Props {
   data: string;
@@ -8,7 +10,9 @@ interface Props {
 const Header = (props: Props) => {
     return (
         <header className="Header">
-            <div>{props.data}</div>
+            <div>
+                {!isAuthenticated && <AuthNav />}
+            </div>
         </header>
     )
 }
