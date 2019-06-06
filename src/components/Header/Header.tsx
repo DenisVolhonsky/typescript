@@ -7,7 +7,6 @@ import { isAuthenticated } from '../../Redux/Auth/selectors'
 import * as operations from '../../Redux/Auth/operations'
 
 const Header:React.FC = (props:any) => {
-  console.log(props);
   return (
       <header className="Header">
           <div>     
