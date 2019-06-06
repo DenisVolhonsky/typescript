@@ -6,7 +6,7 @@ const AuthNav = () => (
   <ul className="AuthNav_nav">
     <li>
       <NavLink
-        to="/signup"
+        to="/auth/signup"
         className="AuthNav_link"
         activeClassName="AuthNav_activeLink"
       >
@@ -15,7 +15,7 @@ const AuthNav = () => (
     </li>
     <li>
       <NavLink
-        to="/signin"
+        to="/auth/signin"
         className="AuthNav_link"
         activeClassName="AuthNav_activeLink"
       >

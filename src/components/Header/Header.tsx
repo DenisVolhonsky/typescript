@@ -1,20 +1,28 @@
 import React from 'react'
-import './Header.scss'
-import { isAuthenticated } from '../../Redux/Auth/selectors'
+import { connect } from 'react-redux'
 import AuthNav from '../AuthNav/AuthNav'
+import './Header.scss'
 
-interface Props {
-  data: string;
+import { isAuthenticated } from '../../Redux/Auth/selectors'
+import * as operations from '../../Redux/Auth/operations'
+
+const Header:React.FC = (props:any) => {
+  console.log(props);
+  return (
+      <header className="Header">
+          <div>     
+            <AuthNav />
+            <button onClick={props.onSignOut}>out</button>
+          </div>
+      </header>
+  )
 }
+const mstp = (state: any) => ({
+  isAuthenticated: isAuthenticated(state)
+})
 
-const Header = (props: Props) => {
-    return (
-        <header className="Header">
-            <div>
-                {!isAuthenticated && <AuthNav />}
-            </div>
-        </header>
-    )
-}
+const mdtp = {
+  onSignOut: operations.signOut
+};
 
-export default Header;
+export default connect(mstp, mdtp)(Header);

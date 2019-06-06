@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as orerations from '../../Redux/Auth/operations'
-import './SignUpForm.scss'
+import './SignInForm.scss'
 
 
-const INITIAL_STATE = { name: '', email: '', password: '' };
+const INITIAL_STATE = { email: '', password: '' };
 
-class signUpForm extends React.Component<any> {
+class signInForm extends React.Component<any> {
   state = { ...INITIAL_STATE };
 
   handleChange = (e:any) => {
@@ -20,28 +20,20 @@ class signUpForm extends React.Component<any> {
     this.props.onSubmit({ ...this.state });
     this.setState({ ...INITIAL_STATE });
   };
-
+  
   render() {
-    const { name, email, password } = this.state;
+    const { email, password } = this.state;
     return (
       <form className="Auth" onSubmit={this.handleSubmit}>
-        <p className="Auth_info">Sign up</p>
-        <input 
-          className="Auth_input" 
-          type="text"
-          name="name"
-          value={name}
-          onChange={this.handleChange} 
-          placeholder="Enter login" 
-          autoFocus 
-          autoComplete="off" /><br />
+        <p className="Auth_info">Sign In</p>
         <input 
           className="Auth_input" 
           type="email"
           name="email"
           value={email}
           onChange={this.handleChange} 
-          placeholder="example@mail.com" 
+          placeholder="example@mail.com"
+          autoFocus  
           autoComplete="off" /><br />  
         <input
           className="Auth_input" 
@@ -50,15 +42,15 @@ class signUpForm extends React.Component<any> {
           value={password}
           onChange={this.handleChange} 
           placeholder="Enter password"/><br />
-        <button className="Auth_submit">Sign up</button>
+        <button className="Auth_submit">Sign In</button>
       </form>
     )
   }
 }
 
 const mdtp = { 
-  onSubmit: orerations.signUp
+  onSubmit: orerations.signIn
 }
 
-export default connect(null, mdtp)(signUpForm)
+export default connect(null, mdtp)(signInForm)
 

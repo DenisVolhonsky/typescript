@@ -12,8 +12,6 @@ class Main extends React.Component<any> {
   }
 
   render() {
-    console.log('props', this.props);
-    console.log('store', store.getState());
     const { allPosts } = this.props;
 
     return (
