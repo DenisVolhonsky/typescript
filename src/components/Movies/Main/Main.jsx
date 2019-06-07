@@ -6,7 +6,6 @@ import SearchField from "../../LeftNav/SearchField/SearchField";
 import SearchBlock from "../../LeftNav/SearchBlock/SearchBlock";
 import SearchCategory from "../../LeftNav/SearchCategory/SearchCategory";
 import FavoriteList from "../../LeftNav/FavoriteList/FavoriteList";
-import { fetchData, fetchFind } from '../../../API';
 import "./Main.scss";
 
 class Main extends React.Component {
@@ -18,30 +17,14 @@ class Main extends React.Component {
     this.props.getPostItems('popular');
   }
 
-  handleChangeCategory = category => {
-    fetchData(category).then(data => {
-      this.setState({
-        allPosts: data
-      });
-    });
-  };
-
-  handleFind = title => {
-    fetchFind(title).then(data => {
-      this.setState({
-        allPosts: data
-      });
-    });
-  };
-
-  addToFavorite = film => {
-    let arr = [...this.state.favoriteItems, film];
-    this.setState({
-      favoriteItems: arr.filter(
-        (item, index, self) => index === self.findIndex(t => t.id === item.id)
-      )
-    });
-  };
+  // addToFavorite = film => {
+  //   let arr = [...this.state.favoriteItems, film];
+  //   this.setState({
+  //     favoriteItems: arr.filter(
+  //       (item, index, self) => index === self.findIndex(t => t.id === item.id)
+  //     )
+  //   });
+  // };
 
   deleteFavorite = id => {
     // delete for favorite list
@@ -64,7 +47,7 @@ class Main extends React.Component {
     return (
       <div className="Main">
         <SearchBlock className="SearchBlock">
-            <SearchField onChangeFilm={this.handleFind} />
+            <SearchField />
             <SearchCategory />
             <FavoriteList
               items={favoriteItems}
