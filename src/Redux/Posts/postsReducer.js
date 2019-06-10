@@ -1,14 +1,13 @@
-import { FETCH_DATA } from './actionPosts'
-import { FIND_DATA } from './actionFind'
+import { actionTypes } from './types'
 
 const initialState = []
 
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_DATA:
+    case actionTypes.FETCH_DATA:
       return action.payload;
-    case FIND_DATA:
-      return action.payload;  
+    case actionTypes.FIND_DATA:
+      return action.payload;
     default:
       return state;
   }

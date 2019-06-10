@@ -9,49 +9,20 @@ import FavoriteList from "../../LeftNav/FavoriteList/FavoriteList";
 import "./Main.scss";
 
 class Main extends React.Component {
-  state = {
-    favoriteItems: JSON.parse(localStorage.getItem("favoriteItems")) || []
-  };
-
   componentDidMount() {
     this.props.getPostItems('popular');
   }
 
-  // addToFavorite = film => {
-  //   let arr = [...this.state.favoriteItems, film];
-  //   this.setState({
-  //     favoriteItems: arr.filter(
-  //       (item, index, self) => index === self.findIndex(t => t.id === item.id)
-  //     )
-  //   });
-  // };
-
-  deleteFavorite = id => {
-    // delete for favorite list
-    this.setState({
-      favoriteItems: this.state.favoriteItems.filter(post => post.id !== id)
-    });
-  };
-
-
-
   render() {
-    const { allPosts } = this.props;
-
-    const { favoriteItems } = this.state;
-    localStorage.setItem(
-      "favoriteItems",
-      JSON.stringify(this.state.favoriteItems)
-    ); // set data from Local Storage
-
+    const { allPosts, favorite } = this.props;
+    let favoriteItemsStore = JSON.parse(localStorage.getItem("favoriteItems")) || favorite
     return (
       <div className="Main">
         <SearchBlock className="SearchBlock">
             <SearchField />
             <SearchCategory />
             <FavoriteList
-              items={favoriteItems}
-              onClickDel={this.deleteFavorite}
+              items={favoriteItemsStore}
             />
           </SearchBlock>
         <AllPosts data={allPosts} />
@@ -60,11 +31,12 @@ class Main extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  allPosts: state.posts
+const mapStateToProps = state => ({
+  allPosts: state.posts,
+  favorite: state.favorite
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   getPostItems: (category) => dispatch(getPosts(category))
 });
 

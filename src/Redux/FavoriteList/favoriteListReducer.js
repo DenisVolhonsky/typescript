@@ -1,19 +1,16 @@
-import { FAVORITE_DATA } from './actionFavoriteList'
-
+import { actionTypes } from './types'
 
 const initialState = []
 
 const favoriteListReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case FAVORITE_DATA:
+    case actionTypes.FAVORITE_DATA:
       return state.includes(payload) ? [...state] : [...state, payload]
+    case actionTypes.REMOVE_FAVORITE_DATA:
+      return state.filter(item => item.id !== payload.id)
     default:
       return state;
   }
 };
 
 export default favoriteListReducer;
-
-
-// arr.filter((item, index, self) => index === self.findIndex(t => t.id === item.id));
-// [...state, action.payload];

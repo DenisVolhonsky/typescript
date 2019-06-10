@@ -3,7 +3,7 @@ import React from 'react';
 import FavoriteItem from '../FavoriteItem/FavoriteItem';
 import './FavoriteList.scss';
 
-const FavoriteList = ({items, onClickDel}) => {
+const FavoriteList = ({items}) => {
     if(items.length === 0) {
         return(
             <div className="Favorite">
@@ -16,7 +16,7 @@ const FavoriteList = ({items, onClickDel}) => {
         return(
             <div className="Favorite">
                 <p className="Favorite__title">watchlist</p>
-                {items.map(item => <FavoriteItem key={item.id} {...item} onClickDel={onClickDel}/>)}
+                {items.map(item => <FavoriteItem key={item.id} {...item}/>)}
             </div>
         );
     }

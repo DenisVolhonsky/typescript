@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
-import {actionTypes} from '../Auth/actions'
+import { combineReducers } from "redux";
+import { actionTypes } from "./types";
 
 // session: {
 //   user: null,
@@ -9,8 +9,7 @@ import {actionTypes} from '../Auth/actions'
 //   token: null
 // }
 
-
-const user = (state = null, {type, payload}) => {
+const user = (state = null, { type, payload }) => {
   switch (type) {
     case actionTypes.SIGN_UP_SUCCESS:
     case actionTypes.SIGN_IN_SUCCESS:
@@ -23,15 +22,15 @@ const user = (state = null, {type, payload}) => {
 const isAuthenticated = (state = false, { type, payload }) => {
   switch (type) {
     case actionTypes.SIGN_UP_SUCCESS:
-        case actionTypes.SIGN_IN_SUCCESS:
+    case actionTypes.SIGN_IN_SUCCESS:
       return true;
-      case actionTypes.SIGN_UP_ERROR:
-      case actionTypes.SIGN_IN_ERROR:
-      return false;  
-  default:
-    return state;
+    case actionTypes.SIGN_UP_ERROR:
+    case actionTypes.SIGN_IN_ERROR:
+      return false;
+    default:
+      return state;
   }
-}
+};
 
 const token = (state = null, { type, payload }) => {
   switch (type) {
@@ -39,17 +38,15 @@ const token = (state = null, { type, payload }) => {
     case actionTypes.SIGN_IN_SUCCESS:
       return payload.token;
     case actionTypes.SIGN_UP_ERROR:
-    case actionTypes.SIGN_IN_ERROR:      
-      return null; 
+    case actionTypes.SIGN_IN_ERROR:
+      return null;
     default:
       return state;
   }
-}
-
+};
 
 export default combineReducers({
   user,
   token,
   isAuthenticated
 });
-

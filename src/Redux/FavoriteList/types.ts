@@ -1,0 +1,4 @@
+export const actionTypes = {
+  FAVORITE_DATA: 'FAVORITE_DATA',
+  REMOVE_FAVORITE_DATA: 'REMOVE_FAVORITE_DATA',
+};

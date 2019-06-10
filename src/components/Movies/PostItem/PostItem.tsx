@@ -5,8 +5,8 @@ import { favoriteItems } from '../../../Redux/FavoriteList/actionFavoriteList'
 
 import './PostItem.scss'
 
-
 interface IFavorite {
+    id: number,
     title: string;
     overview: string,
     poster_path: string,
@@ -14,18 +14,8 @@ interface IFavorite {
     release_date: string
 }
 
-const PostItem: React.FC<IMovieItem> = ({ title, overview, poster_path, vote_average, release_date, favorite }) => {
-    
-    
-    // addToFavorite = film => {
-    //     let arr = [...this.state.favoriteItems, film];
-    //     this.setState({
-    //       favoriteItems: arr.filter(
-    //         (item, index, self) => index === self.findIndex(t => t.id === item.id)
-    //       )
-    //     });
-    //   };
-    const cardData = {title, overview, poster_path, vote_average, release_date};
+const PostItem: React.FC<IMovieItem> = ({ id, title, overview, poster_path, vote_average, release_date, favorite }) => {
+    const cardData = {id, title, overview, poster_path, vote_average, release_date};
     const clickHandler = () => favorite(cardData);
 
     return (
@@ -44,15 +34,8 @@ const PostItem: React.FC<IMovieItem> = ({ title, overview, poster_path, vote_ave
 
 }
 
-const mapStateToProps = (state: any) => ({
-
-});
-
 const mapDispatchToProps = (dispatch: any) => ({
-    // getPostItems: (category) => dispatch(getPosts(category))
     favorite: (item:IFavorite) => dispatch(favoriteItems(item))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostItem);
-
-// onClick={() => favorite(cardData)}
+export default connect(null, mapDispatchToProps)(PostItem);
