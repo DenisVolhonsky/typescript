@@ -7,6 +7,8 @@
     "@babel/plugin-transform-modules-commonjs": "^7.1.0",
     "@babel/polyfill": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "@types/enzyme": "^3.9.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "24.0.13",
     "@types/node": "12.0.4",
     "@types/react": "16.8.19",
@@ -18,8 +20,6 @@
     "babel-preset-react-app-babel-7": "^4.0.2-0",
     "chai": "^4.2.0",
     "chai-enzyme": "^1.0.0-beta.1",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.7.0",
     "ignore-styles": "^5.0.1",
     "jsdom": "^13.0.0",
     "mocha": "^5.2.0",
@@ -33,6 +33,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "save": "^2.4.0",
     "sinon": "^7.3.2",
     "typescript": "3.5.1"
   },
@@ -40,7 +41,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "test": "mocha --watch --require babel-register.js --require ignore-styles --require setup.js  src/test/*.test.js"
+    "test": "react-scripts test",
+    "test-jest": "jest"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,7 +60,8 @@
     ]
   },
   "devDependencies": {
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.13.2"
+    "@types/sinon": "^7.0.12",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0"
   }
 }

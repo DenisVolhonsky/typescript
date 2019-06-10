@@ -1,9 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import FavoriteItem from '../FavoriteItem/FavoriteItem';
 import './FavoriteList.scss';
 
-const FavoriteList = ({items}) => {
+const FavoriteList = ({items, deleteFavoriteItem}) => {
     if(items.length === 0) {
         return(
             <div className="Favorite">
@@ -16,13 +15,10 @@ const FavoriteList = ({items}) => {
         return(
             <div className="Favorite">
                 <p className="Favorite__title">watchlist</p>
-                {items.map(item => <FavoriteItem key={item.id} {...item}/>)}
+                {items.map(item => <FavoriteItem key={item.id} deleteFavoriteItem={deleteFavoriteItem} {...item}/>)}
             </div>
         );
     }
 }
-// FavoriteList.propTypes = {
-//     onTodoClick: PropTypes.func.isRequired,
-//     onChangeCity: PropTypes.func.isRequired,
-// }
+
 export default FavoriteList;

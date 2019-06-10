@@ -1,10 +1,18 @@
-import React from 'react';
-import { connect } from 'react-redux'
-import { favoriteItemsRemove } from '../../../Redux/FavoriteList/actionFavoriteList'
+import React, { FC } from 'react';
 import './FavoriteItem.scss';
 
-const FavoriteItem = ({id, title, release_date, vote_average, poster_path, deleteFavoriteItem}) => {
-    const cardData = {id, title, release_date, vote_average, poster_path,};
+
+interface FavoriteItemProps {
+    id: number;
+    title: string;
+    release_date: string;
+    vote_average:number;
+    poster_path: string;
+    deleteFavoriteItem: (card: any)=> void;
+}
+
+const FavoriteItem: FC<FavoriteItemProps> = ({id, title, release_date, vote_average, poster_path, deleteFavoriteItem}) => {
+    const cardData = {id, title, release_date, vote_average, poster_path};
     const handlerClick = () => deleteFavoriteItem(cardData);
 
     return (
@@ -17,12 +25,7 @@ const FavoriteItem = ({id, title, release_date, vote_average, poster_path, delet
                 <button className="FavoriteItem__btn" onClick={handlerClick}>-</button>
             </div>
         </div>
-    )
+    );
 }
 
-
-const mapDispatchToProps = (dispatch) => ({
-    deleteFavoriteItem: (item) => dispatch(favoriteItemsRemove(item))
-})
-
-export default connect(null, mapDispatchToProps)(FavoriteItem);
+export default FavoriteItem;

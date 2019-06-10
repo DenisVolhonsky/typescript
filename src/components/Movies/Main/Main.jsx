@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getPosts } from "../../../Redux/Posts/actionPosts";
 import SearchField from "../../LeftNav/SearchField/SearchField";
 import SearchBlock from "../../LeftNav/SearchBlock/SearchBlock";
+import { favoriteItemsRemove } from "../../../Redux/FavoriteList/actionFavoriteList";
 import SearchCategory from "../../LeftNav/SearchCategory/SearchCategory";
 import FavoriteList from "../../LeftNav/FavoriteList/FavoriteList";
 import "./Main.scss";
@@ -14,7 +15,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { allPosts, favorite } = this.props;
+    const { allPosts, favorite, deleteFavoriteItem } = this.props;
     let favoriteItemsStore = JSON.parse(localStorage.getItem("favoriteItems")) || favorite
     return (
       <div className="Main">
@@ -22,6 +23,7 @@ class Main extends React.Component {
             <SearchField />
             <SearchCategory />
             <FavoriteList
+              deleteFavoriteItem={deleteFavoriteItem}
               items={favoriteItemsStore}
             />
           </SearchBlock>
@@ -37,7 +39,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getPostItems: (category) => dispatch(getPosts(category))
+  getPostItems: (category) => dispatch(getPosts(category)),
+  deleteFavoriteItem: (item) => dispatch(favoriteItemsRemove(item))
 });
 
 export default connect(

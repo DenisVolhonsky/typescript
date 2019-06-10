@@ -6,7 +6,7 @@ import SignInForm from '../SignInForm/SignInForm'
 import {Route, Switch, Redirect} from 'react-router-dom'
 import './App.scss'
 
-class App extends React.Component<any> {
+class App extends React.Component<{}, {}> {
     render() {
         return(
             <div className="App">

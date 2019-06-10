@@ -47,11 +47,11 @@ export const signIn = credentials => dispatch => {
       .catch(error => dispatch(signInError(error)));
   };
   
-  export const signOut = () => dispatch => {
-    dispatch(signOutRequest());
-    axios.post('http://localhost:4040/auth/signout').then(() => {
-    clearAuthHeader();
-    dispatch(signOutSuccess());
-    });
-  };
+export const signOut = () => dispatch => {
+  dispatch(signOutRequest());
+  axios.post('http://localhost:4040/auth/signout').then(() => {
+  clearAuthHeader();
+  dispatch(signOutSuccess());
+  });
+};
   

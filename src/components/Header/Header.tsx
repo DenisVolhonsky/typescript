@@ -11,7 +11,6 @@ const Header:React.FC = (props:any) => {
       <header className="Header">
           <div>     
             <AuthNav />
-            <button onClick={props.onSignOut}>out</button>
           </div>
       </header>
   )

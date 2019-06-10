@@ -10,7 +10,7 @@ class SearchCategory extends React.Component {
     };
 
     _handleActiveBtn = event => {
-        this.props.getPostItems(event.target.value);
+        this.props.getPosts(event.target.value);
         this.setState({
             selectBtn: event.target.value,
         });
@@ -42,11 +42,7 @@ class SearchCategory extends React.Component {
     }
 }
   
-const mapDispatchToProps = (dispatch) => ({
-getPostItems: (category) => dispatch(getPosts(category))
-});
-  
 export default connect(
     null,
-    mapDispatchToProps
+    { getPosts }
   )(SearchCategory);
