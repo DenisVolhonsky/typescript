@@ -1,7 +1,5 @@
-export const actionTypes = {
-  FETCH_DATA:'FETCH_DATA',
-  FIND_DATA: 'FIND_DATA',
-};
+export const FETCH_DATA = 'FETCH_DATA'
+export const FIND_DATA =  'FIND_DATA'
 
 export interface IPosts {
   id: number;

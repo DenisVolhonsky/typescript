@@ -1,12 +1,12 @@
 import {fetchFind} from '../../API'
 import { Dispatch } from 'redux'
-import { actionTypes, IPosts } from './types'
+import { FIND_DATA, IPosts } from './types'
 
 export const findPosts = (title: string) => {
   return (dispatch: Dispatch) => {
     fetchFind(title).then((data: IPosts) => {
       dispatch({
-        type: actionTypes.FIND_DATA,
+        type: FIND_DATA,
         payload: data
       })
     });

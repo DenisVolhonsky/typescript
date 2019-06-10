@@ -1,4 +1,4 @@
-import { actionTypes, IPosts } from './types'
+import { FETCH_DATA, FIND_DATA, IPosts } from './types'
 
 const initialState: IPosts[] = []
 
@@ -9,9 +9,9 @@ interface IAction {
 
 const postsReducer = (state = initialState, { type, payload }: IAction) => {
   switch (type) {
-    case actionTypes.FETCH_DATA:
+    case FETCH_DATA:
       return payload;
-    case actionTypes.FIND_DATA:
+    case FIND_DATA:
       return payload;
     default:
       return state;
