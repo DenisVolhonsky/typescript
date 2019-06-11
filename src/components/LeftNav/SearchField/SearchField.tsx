@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { connect } from 'react-redux'
 import { findPosts } from '../../../Redux/Posts/actionFind'
 import { getPosts } from '../../../Redux/Posts/actionPosts'
 import './SearchField.scss'
 
-const SearchField = ({findPostItems, getPostItems}) => {
+interface SearchFieldProps {
+  findPosts: (e: string) => void;
+  getPosts: (e: string) => void;
+}
 
-    const handleFind = (event) => {           
+const SearchField:FC<SearchFieldProps> = ({findPosts, getPosts}: SearchFieldProps) => {
+
+    const handleFind = (event:any) => {           
       if(event.target.value.length > 0) {        
-        findPostItems(event.target.value);
+        findPosts(event.target.value);
       }
       else
-        getPostItems('popular')
+      getPosts('popular')
     }
 
     return(
@@ -24,9 +29,4 @@ const SearchField = ({findPostItems, getPostItems}) => {
     );
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  findPostItems: (title) => dispatch(findPosts(title)), 
-  getPostItems: (category) => dispatch(getPosts(category))
-})
-
-export default  connect(null, mapDispatchToProps)(SearchField);
+export default  connect(null, {findPosts, getPosts})(SearchField);

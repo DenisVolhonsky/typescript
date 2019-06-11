@@ -6,8 +6,6 @@ import postsReducer from './Posts/postsReducer'
 import sessionReducer from './Auth/sessionReducer'
 import favoriteListReducer from './FavoriteList/favoriteListReducer'
 
-
-
 const rootReducer = combineReducers({
     posts: postsReducer,
     session: sessionReducer,

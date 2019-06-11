@@ -1,10 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 import PostItem from '../PostItem/PostItem'
 import './AllPosts.scss'
-
-// import { fetchData, fetchFind } from '../../API'
-// console.log(fetchData('popular'));
-// console.log(fetchFind('Чернобыль'));
 
 export interface IMovieItem {
     id: number;
@@ -20,7 +16,7 @@ interface PostItemProps {
     data: IMovieItem[]
 }
 
-const AllPosts: React.FC<PostItemProps> = (props: PostItemProps) => {
+const AllPosts:FC<PostItemProps> = (props: PostItemProps) => {
     const { data } = props;
     return (
         <div className="Posts">

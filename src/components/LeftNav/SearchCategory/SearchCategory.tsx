@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { getPosts } from '../../../Redux/Posts/actionPosts'
 import { connect } from "react-redux";
-import { btn } from '../../constants'
+import { category } from '../../constants'
 import './SearchCategory.scss'
 
-class SearchCategory extends React.Component {   
+interface SearchCategoryProps {
+    getPosts: (e:string)=> void;
+}
+
+class SearchCategory extends Component<SearchCategoryProps, {}> {   
     state = {
         selectBtn: 'popular'
     };
 
-    _handleActiveBtn = event => {
+    _handleActiveBtn = (event:any) => {
         this.props.getPosts(event.target.value);
         this.setState({
             selectBtn: event.target.value,
@@ -19,7 +23,7 @@ class SearchCategory extends React.Component {
     render() {
         return (
             <div className="SearchCategory">
-                {btn.map((item)=> (
+                {category.map((item)=> (
                 item === this.state.selectBtn ?
                     (<button
                             key={item}

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import './AuthNav.scss'
 
-const AuthNav = () => (
+const AuthNav:FC = () => (
   <ul className="AuthNav_nav">
     <li>
       <NavLink

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as orerations from '../../Redux/Auth/operations'
 import './SignInForm.scss'
@@ -6,7 +6,7 @@ import './SignInForm.scss'
 
 const INITIAL_STATE = { email: '', password: '' };
 
-class signInForm extends React.Component<any> {
+class signInForm extends Component<any> {
   state = { ...INITIAL_STATE };
 
   handleChange = (e:any) => {

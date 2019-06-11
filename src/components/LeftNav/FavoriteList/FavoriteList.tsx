@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { FC } from 'react';
 import FavoriteItem from '../FavoriteItem/FavoriteItem';
 import './FavoriteList.scss';
 
-const FavoriteList = ({items, deleteFavoriteItem}) => {
+interface FavoriteItemsProps {
+    id: number;
+    title: string;
+    release_date: string;
+    vote_average:number;
+    poster_path: string;
+}
+
+interface FavoriteListProps {
+    items: FavoriteItemsProps[];
+    deleteFavoriteItem: (card: any)=> void;
+}
+
+const FavoriteList:FC<FavoriteListProps> = ({items, deleteFavoriteItem}) => {
     if(items.length === 0) {
         return(
             <div className="Favorite">

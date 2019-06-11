@@ -19,7 +19,7 @@ const user = (state = null, { type, payload }) => {
   }
 };
 
-const isAuthenticated = (state = false, { type, payload }) => {
+const isAuthenticated = (state = false, { type }) => {
   switch (type) {
     case actionTypes.SIGN_UP_SUCCESS:
     case actionTypes.SIGN_IN_SUCCESS:

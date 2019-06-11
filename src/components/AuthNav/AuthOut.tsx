@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import './AuthNav.scss'
 
-const AuthOut = () => (
+const AuthOut:FC = () => (
   <div className="AuthNav_nav">
       <NavLink
         to="/auth/signin"
@@ -12,7 +12,6 @@ const AuthOut = () => (
         Sign out
       </NavLink>
    </div> 
-
 );
 
 export default AuthOut;

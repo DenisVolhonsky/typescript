@@ -15,7 +15,7 @@ class App extends React.Component<{}, {}> {
                     <Route exact path="/auth/signup" component={SignUpForm}/>
                     <Route exact path="/auth/signin" component={SignInForm}/>
                     <Route exact path="/movies" component={Main}/>
-                    <Redirect to="/"/>
+                    <Redirect from="/" to="/movies"/>
                 </Switch>
             </div>
         )

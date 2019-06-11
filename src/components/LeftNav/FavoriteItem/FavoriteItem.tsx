@@ -1,8 +1,7 @@
-import React, { FC } from 'react';
-import './FavoriteItem.scss';
+import React, { FC } from 'react'
+import './FavoriteItem.scss'
 
-
-interface FavoriteItemProps {
+export interface FavoriteItemProps {
     id: number;
     title: string;
     release_date: string;
